@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  /* Definimos tus colores de marca para que Tailwind los reconozca */
+  --color-perez-blue: #040833;
+  --color-perez-silver: #cbd5e1;
+  --color-perez-gold: #D4AF37;
+  
+  /* Esto permite usar clases como bg-perez-blue o text-perez-gold */
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* Eliminamos el bloque de @media (prefers-color-scheme: dark) 
+   para que la página no cambie a negro sola */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
