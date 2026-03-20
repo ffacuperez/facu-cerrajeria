@@ -36,7 +36,7 @@ export default function Testimonios() {
             Opiniones Reales
           </h2>
           <p className="text-4xl md:text-5xl font-bold text-slate-900">
-            Nuestros clientes nos avalan
+            Nuestros clientes opinan
           </p>
           <div className="h-1 w-20 bg-perez-gold mx-auto mt-6"></div>
         </div>
