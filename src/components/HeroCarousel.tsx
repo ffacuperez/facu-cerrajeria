@@ -4,19 +4,19 @@ import React, { useState, useEffect } from 'react';
 
 const slides = [
   {
-    url: 'https://images.unsplash.com/photo-1512101344-93c66f281e2b?q=80&w=1920&auto=format&fit=crop',
-    title: 'Seguridad para tu Hogar',
-    subtitle: 'Expertos en aperturas y blindajes de puertas en Córdoba.'
+    url: '/carousel-urgencias.webp',
+    title: 'Urgencias las 24 Horas',
+    subtitle: 'Llegamos rápido a donde estés. Aperturas residenciales y comerciales sin daños.'
   },
   {
-    url: 'https://images.unsplash.com/photo-1549317661-ef355e75fe66?q=80&w=1920&auto=format&fit=crop',
-    title: 'Cerrajería Automotriz',
-    subtitle: 'Copias de llaves con chip, telemandos y carcasas.'
+    url: '/carousel-copias.webp',
+    title: 'Copias de Alta Precisión',
+    subtitle: 'Especialistas en llaves Doble Paleta, Candados y Pines Magnéticos. Duplicados en el acto.'
   },
   {
-    url: 'https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=1920&auto=format&fit=crop',
-    title: 'Urgencias 24 Horas',
-    subtitle: 'Estamos donde nos necesites, cuando nos necesites.'
+    url: '/carousel-cerradura.webp',
+    title: 'Cambio de Combinación y Cerraduras',
+    subtitle: 'Te mudaste o perdiste las llaves? Cambiamos tu combinación o instalamos cerraduras nuevas para tu tranquilidad.'
   }
 ];
 
@@ -53,7 +53,7 @@ export default function HeroCarousel() {
           }`}
           style={{
             backgroundImage: `url(${slide.url})`,
-            backgroundPosition: 'center',
+            backgroundPosition: 'center 35%',
             backgroundSize: 'cover',
           }}
         >

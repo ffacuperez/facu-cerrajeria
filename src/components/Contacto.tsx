@@ -37,7 +37,7 @@ export default function Contacto() {
                 </div>
                 <div>
                   <h4 className="font-bold text-perez-blue uppercase text-sm tracking-wider">Horarios</h4>
-                  <p className="text-slate-600">Lunes a Viernes: 09:00 - 19:00 hs</p>
+                  <p className="text-slate-600">Lunes a Viernes: 09:00 - 21:00 hs</p>
                   <p className="text-perez-blue font-bold">Urgencias: 24 Horas</p>
                 </div>
               </div>
