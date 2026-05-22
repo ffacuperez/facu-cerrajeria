@@ -6,18 +6,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 const servicios = [
   {
     titulo: "Aperturas 24hs",
-    desc: "Aperturas de puertas de casa, comercios y vehículos sin daños. Servicio de urgencia garantizado.",
-    icon: "🔑"
+    desc: "Servicio de urgencia garantizado en casas, comercios y vehículos.",
+    detalles: "Atendemos urgencias las 24 horas. Utilizamos herramientas de precisión para aperturas de puertas blindadas y vehículos sin afectar la estética ni la seguridad original.",
+    icon: "🔑",
+    imagen: "/services-urgencias.webp"
   },
   {
     titulo: "Copias de Precisión",
-    desc: "Duplicados de llaves comunes, multipunto y automotrices con tecnología de última generación.",
-    icon: "⚙️"
+    desc: "Duplicados de llaves y llaveros magnéticos con tecnología láser.",
+    detalles: "Realizamos duplicados exactos en el acto. Copiamos llaves multipunto, llaves de doble paleta y configuramos llaveros magnéticos (tags) para edificios con máxima fidelidad.",
+    icon: "⚙️",
+    imagen: "/services-copias.webp"
   },
   {
     titulo: "Seguridad Integral",
-    desc: "Instalación de cerrojos de alta seguridad, blindaje de accesos y cambios de combinación.",
-    icon: "🛡️"
+    desc: "Instalación de cerrojos de alta seguridad y cambios de combinación.",
+    detalles: "Asesoramiento para blindar tu hogar. Instalación de cerrojos suplementarios de marcas líderes y mantenimiento especializado de cajas fuertes.",
+    icon: "🛡️",
+    imagen: "/services-cerradura.webp"
   }
 ];
 
@@ -68,37 +74,66 @@ export default function Servicios() {
       {/* Modal */}
       <AnimatePresence>
         {selectedService && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedService(null)}
-            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-lg shadow-2xl max-w-md w-full p-8"
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            {/* Backdrop con Blur */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedService(null)}
+              className="absolute inset-0 bg-perez-blue/40 backdrop-blur-md"
+            />
+
+            {/* Contenido del Modal */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative bg-white overflow-hidden rounded-2xl shadow-2xl max-w-lg w-full z-10"
             >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="text-5xl">{selectedService.icon}</div>
-                <h2 className="text-2xl font-black text-perez-blue uppercase tracking-tighter">
-                  {selectedService.titulo}
-                </h2>
+              {/* Imagen de Encabezado */}
+              <div className="h-48 w-full relative overflow-hidden bg-perez-blue/10">
+                <img 
+                  src={selectedService.imagen} 
+                  alt={selectedService.titulo}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-black/20" />
+                <button 
+                  onClick={() => setSelectedService(null)}
+                  className="absolute top-4 right-4 bg-black/20 hover:bg-black/40 backdrop-blur-md text-white p-2 rounded-full transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
               </div>
-              <p className="text-slate-600 leading-relaxed mb-8 text-base">
-                {selectedService.desc}
-              </p>
-              <button
-                onClick={() => setSelectedService(null)}
-                className="w-full bg-perez-blue text-white py-3 rounded font-bold text-sm tracking-widest uppercase hover:bg-perez-blue/90 transition-colors"
-              >
-                Cerrar
-              </button>
+
+              {/* Contenido Texto */}
+              <div className="p-8 md:p-10">
+                <div className="flex items-center gap-4 mb-4">
+                  <span className="text-4xl">{selectedService.icon}</span>
+                  <h3 className="text-2xl font-black text-perez-blue uppercase tracking-tighter">
+                    {selectedService.titulo}
+                  </h3>
+                </div>
+                
+                <p className="text-slate-600 leading-relaxed mb-8 font-light italic border-l-4 border-perez-blue pl-4">
+                  {selectedService.detalles}
+                </p>
+
+                <div className="flex flex-col gap-3">
+                  <button 
+                    onClick={() => setSelectedService(null)}
+                    className="bg-perez-blue text-white font-bold py-3 px-8 rounded-lg hover:bg-slate-800 transition-all uppercase text-xs tracking-widest text-center shadow-lg"
+                  >
+                    Cerrar
+                  </button>
+                </div>
+              </div>
             </motion.div>
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </section>
