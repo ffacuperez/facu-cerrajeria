@@ -64,6 +64,43 @@ export default function Servicios() {
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {selectedService && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedService(null)}
+            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-lg shadow-2xl max-w-md w-full p-8"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="text-5xl">{selectedService.icon}</div>
+                <h2 className="text-2xl font-black text-perez-blue uppercase tracking-tighter">
+                  {selectedService.titulo}
+                </h2>
+              </div>
+              <p className="text-slate-600 leading-relaxed mb-8 text-base">
+                {selectedService.desc}
+              </p>
+              <button
+                onClick={() => setSelectedService(null)}
+                className="w-full bg-perez-blue text-white py-3 rounded font-bold text-sm tracking-widest uppercase hover:bg-perez-blue/90 transition-colors"
+              >
+                Cerrar
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
