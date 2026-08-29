@@ -14,10 +14,11 @@ const Navbar = () => {
 
       {/* Menú Centrado */}
       <div className="flex items-center gap-6 md:gap-10 text-perez-silver font-medium tracking-wide text-sm md:text-base">
-        <a href="#inicio" className="hover:text-white transition-all">Inicio</a>
-        <a href="#servicios" className="hover:text-white transition-all">Servicios</a>
-        <a href="#testimonios" className="hover:text-white transition-all">Testimonios</a>
-        <a href="#contacto" className="hover:text-white transition-all">Contacto</a>
+        <a href="/#inicio" className="hover:text-white transition-all">Inicio</a>
+        <a href="/#servicios" className="hover:text-white transition-all">Servicios</a>
+        <a href="/#testimonios" className="hover:text-white transition-all">Testimonios</a>
+        <a href="/#contacto" className="hover:text-white transition-all">Contacto</a>
+        <a href="/#FAQ" className="hover:text-white transition-all">FAQ</a>
       </div>
 
       {/* Espacio vacío para balancear el flex o podés dejarlo sin nada */}

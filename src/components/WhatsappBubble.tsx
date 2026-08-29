@@ -3,7 +3,7 @@ import React from 'react';
 export default function WhatsAppBubble() {
   return (
     <a
-      href="https://wa.me/543518148211" // Reemplazá con el número real
+      href="https://wa.me/543516640456" // Reemplazá con el número real
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-8 right-8 z-[150] bg-[#25D366] p-4 rounded-full shadow-2xl hover:scale-110 hover:rotate-6 transition-all duration-300 group"

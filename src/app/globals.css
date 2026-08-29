@@ -1,12 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  /* Definimos tus colores de marca para que Tailwind los reconozca */
+  /* Colores de marca */
   --color-perez-blue: #040833;
   --color-perez-silver: #cbd5e1;
+  --color-perez-silver-light: #f1f5f9;
   --color-perez-gold: #D4AF37;
-  
-  /* Esto permite usar clases como bg-perez-blue o text-perez-gold */
+}
+
+/* Container centrado con ancho máximo */
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 :root {
