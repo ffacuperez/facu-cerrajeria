@@ -21,10 +21,11 @@ export default function Footer() {
 
           {/* Enlaces de Navegación */}
           <div className="flex flex-col gap-4 uppercase text-[10px] tracking-[0.3em] font-bold">
-            <a href="#inicio" className="hover:text-white transition-colors">Inicio</a>
-            <a href="#servicios" className="hover:text-white transition-colors">Servicios</a>
-            <a href="#testimonios" className="hover:text-white transition-colors">Testimonios</a>
-            <a href="#contacto" className="hover:text-white transition-colors">Contacto</a>
+            <a href="/#inicio" className="hover:text-white transition-colors">Inicio</a>
+            <a href="/#servicios" className="hover:text-white transition-colors">Servicios</a>
+            <a href="/#testimonios" className="hover:text-white transition-colors">Testimonios</a>
+            <a href="/#contacto" className="hover:text-white transition-colors">Contacto</a>
+            <a href="/#FAQ" className="hover:text-white transition-colors">FAQ</a>
           </div>
 
           {/* Info Legal y Créditos */}

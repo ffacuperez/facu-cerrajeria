@@ -3,6 +3,7 @@ import HeroCarousel from '@/components/HeroCarousel';
 import Servicios from '@/components/Servicios'; // <-- Importamos el componente pro
 import Testimonios from '@/components/Testimonios';
 import Contacto from '@/components/Contacto';
+import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
 import WhatsAppBubble from '@/components/WhatsappBubble';
 import Script from 'next/script';
@@ -13,22 +14,37 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Locksmith",
     "name": "Cerrajería Pérez",
-    "description": "Cerrajería de urgencias 24 horas en Córdoba Capital. Seguridad y confianza.",
-    "url": "https://cerrajeriaperez.com.ar",
-    "telephone": "+5493518148211", // <-- Poné tu celular real acá
+    "description":
+      "Cerrajería en Córdoba Capital. Aperturas de urgencia 24hs, copias de llaves doble paleta, cambio de combinación y cerraduras de seguridad.",
+    "url": "https://www.cerrajeriaperez.com.ar",
+    "telephone": ["+5493516640456", "+5493518148211"],
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "Dr. Eduardo Braun Menéndez 2579",
       "addressLocality": "Córdoba",
       "addressRegion": "Córdoba",
-      "addressCountry": "AR"
+      "postalCode": "5001",
+      "addressCountry": "AR",
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": -31.4167, 
-      "longitude": -64.1833
+      "latitude": -31.3744,
+      "longitude": -64.1764,
     },
-    "openingHours": "Mo-Su 00:00-23:59",
-    "image": "https://cerrajeriaperez.com.ar/logo.png" 
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "21:00",
+      },
+    ],
+    "areaServed": {
+      "@type": "City",
+      "name": "Córdoba",
+    },
+    "image": "https://www.cerrajeriaperez.com.ar/logo-perez.png",
+    "priceRange": "$$",
   };
 
   return (
@@ -45,6 +61,7 @@ export default function Home() {
       <Servicios />
       <Testimonios />
       <Contacto />
+      <FAQ />
       <Footer />
       <WhatsAppBubble />
     </main>
