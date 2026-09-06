@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 const slides = [
   {
@@ -22,27 +22,55 @@ const slides = [
 
 export default function HeroCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
-  // Funciones de navegación
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  };
+  }, []);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  }, []);
+
+  // Swipe handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
   };
 
-  // Autoplay estable: El timer se reinicia CADA VEZ que el currentIndex cambia
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 50; // mínimo de px para considerar swipe
+
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        nextSlide(); // swipe izquierda → siguiente
+      } else {
+        prevSlide(); // swipe derecha → anterior
+      }
+    }
+  };
+
+  // Autoplay
   useEffect(() => {
     const timer = setInterval(() => {
       nextSlide();
     }, 5000);
 
     return () => clearInterval(timer);
-  }, [currentIndex]); // Solo depende de currentIndex, nunca cambia de tamaño
+  }, [currentIndex, nextSlide]);
 
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-black group">
+    <div
+      className="relative h-screen w-full overflow-hidden bg-black group"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       
       {/* Contenedor de Imágenes con Transición de Opacidad */}
       {slides.map((slide, index) => (
@@ -75,14 +103,16 @@ export default function HeroCarousel() {
 
       {/* Flechas de Navegación */}
       <button 
-        onClick={prevSlide} 
+        onClick={prevSlide}
+        aria-label="Slide anterior"
         className="hidden group-hover:block absolute top-1/2 left-6 -translate-y-1/2 z-30 p-4 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white transition-all shadow-2xl"
       >
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
       </button>
       
       <button 
-        onClick={nextSlide} 
+        onClick={nextSlide}
+        aria-label="Slide siguiente"
         className="hidden group-hover:block absolute top-1/2 right-6 -translate-y-1/2 z-30 p-4 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white transition-all shadow-2xl"
       >
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
@@ -94,6 +124,7 @@ export default function HeroCarousel() {
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
+            aria-label={`Ir al slide ${index + 1}`}
             className={`h-1 transition-all duration-500 rounded-full ${
               index === currentIndex ? 'bg-white w-20' : 'bg-white/30 w-12 hover:bg-white/50'
             }`}
