@@ -12,8 +12,8 @@ const reseñas = [
     estrellas: 5
   },
   {
-    nombre: "Sandra Gudiño",
-    comentario: "Muy recomendable",
+    nombre: "Hernan Poblete",
+    comentario: "Servicio Rápido y de Calidad!",
     estrellas: 5
   }
 ];
